@@ -4,6 +4,8 @@ A calm, 3D, human view of any [Paperclip](https://paperclip.ing) company: who's 
 
 Read-only. Zero dependencies. Bolts onto a running Paperclip instance — no setup beyond pointing it at your API.
 
+**[Try the live demo →](https://paperclip-studio-drab.vercel.app)** — no install, no Paperclip instance, just sample data.
+
 ![Paperclip Studio: hover an agent and it turns around](docs/media/hero.gif)
 
 [▶ 1-minute walkthrough](docs/media/promo.mp4)
