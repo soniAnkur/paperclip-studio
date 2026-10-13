@@ -4,6 +4,14 @@ A calm, 3D, human view of any [Paperclip](https://paperclip.ing) company: who's 
 
 Read-only. Zero dependencies. Bolts onto a running Paperclip instance — no setup beyond pointing it at your API.
 
+![Paperclip Studio: hover an agent and it turns around](docs/media/hero.gif)
+
+[▶ 1-minute walkthrough](docs/media/promo.mp4)
+
+| Team | Work |
+|---|---|
+| ![Team view](docs/media/team.png) | ![Work view](docs/media/work.png) |
+
 ## Quickstart
 
 No real Paperclip instance yet? Just run it — it ships with sample data:
