@@ -1,0 +1,22 @@
+{
+  "name": "paperclip-studio",
+  "version": "1.0.0",
+  "description": "A calm, 3D, human view of any Paperclip (paperclip.ing) company — who's working, who's free, and where the work goes next.",
+  "license": "MIT",
+  "author": "Ankur Soni",
+  "homepage": "https://github.com/soniAnkur/paperclip-studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soniAnkur/paperclip-studio.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "demo": "STUDIO_DEMO=1 node server.mjs"
+  },
+  "dependencies": {}
+}

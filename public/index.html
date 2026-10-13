@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paperclip Studio</title>
+<meta name="description" content="A live, human view of a Paperclip company: who is working, who is free, and where the work goes next.">
+<meta name="theme-color" content="#f5f5f7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='10' y='6' width='44' height='52' rx='9' fill='%231d1d1f'/%3E%3Crect x='19' y='18' width='26' height='4' rx='2' fill='%23fff'/%3E%3Crect x='19' y='28' width='26' height='4' rx='2' fill='%23fff' opacity='.7'/%3E%3Crect x='19' y='38' width='16' height='4' rx='2' fill='%2330d158'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/style.css">
+<script type="importmap">
+{ "imports": { "three": "/vendor/three/three.module.js", "three/addons/": "/vendor/three/addons/" } }
+</script>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="/"><span class="mark" aria-hidden="true"></span><span id="brandName">Paperclip Studio</span></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#team">Team</a><a href="#papers">Work</a><a href="#lately">Lately</a>
+  </nav>
+  <label class="switch"><span class="sr">Company</span><select id="switcher" aria-label="Company"></select></label>
+  <div class="live" id="live"><span class="pulse"></span><span id="liveText">Connecting…</span></div>
+</header>
+
+<section class="home-view" aria-label="Companies">
+  <p class="kicker">Paperclip Studio</p>
+  <h2 class="home-h">Your companies, <span class="grad">at a glance.</span></h2>
+  <p class="home-sub">Pick a company to step into its studio. Everything here is live and read-only.</p>
+  <div class="picker" id="picker"></div>
+</section>
+
+<main>
+  <section class="hero" aria-label="Studio">
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <div class="hero-copy">
+      <p class="eyebrow" id="eyebrow">Live from the studio</p>
+      <h1 id="headline">Getting the studio ready.</h1>
+      <p class="sub" id="subline">&nbsp;</p>
+      <div class="ticker" id="ticker" aria-live="polite"></div>
+    </div>
+    <div class="labels" id="labels" aria-hidden="true"></div>
+    <aside class="card" id="card" aria-live="polite" hidden></aside>
+    <div class="hint" id="hint">Hover an agent to turn it around · click to pin</div>
+    <div class="legend" aria-hidden="true">
+      <span><i class="dot working"></i>Working</span>
+      <span><i class="dot ready"></i>Up next</span>
+      <span><i class="dot waiting"></i>Waiting</span>
+      <span><i class="dot free"></i>Free</span>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <p class="kicker">The team</p>
+    <h2>Who's doing what.</h2>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section class="section" id="papers">
+    <p class="kicker">The work</p>
+    <h2>Work in flight.</h2>
+    <div id="paperList" class="papers"></div>
+    <div id="shipped" class="shipped"></div>
+  </section>
+
+  <section class="section" id="lately">
+    <p class="kicker">The log, in English</p>
+    <h2>Lately.</h2>
+    <ol class="feed" id="feed"></ol>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>A read-only view of Paperclip. Refreshes every few seconds.</span>
+  <span>Characters are drawn in code with three.js.</span>
+</footer>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>
