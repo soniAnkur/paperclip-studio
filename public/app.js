@@ -10,7 +10,7 @@ const ROBOT_HEIGHT = 2.25; // character height incl. scale
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // Company to show: /c/<PREFIX> or ?company=<prefix|id>. None -> the company picker.
-const COMPANY = decodeURIComponent((location.pathname.match(/^\/c\/([^/]+)/) || [])[1] || new URLSearchParams(location.search).get("company") || "");
+let COMPANY = decodeURIComponent((location.pathname.match(/^\/c\/([^/]+)/) || [])[1] || new URLSearchParams(location.search).get("company") || "");
 const STATUS_COLOR = { working: "#30d158", ready: "#0a84ff", waiting: "#ff9f0a", free: "#d1d1d6", error: "#ff3b30", paused: "#ff3b30" };
 const STATE_WORDS = { working: "Working", ready: "Up next", waiting: "Waiting", free: "Free", error: "Needs attention", paused: "Paused" };
 // Accent per agent: its kit's colour; a second, different agent with the same kit gets a hue shift.
@@ -340,7 +340,7 @@ function fitCamera() {
   if (narrow) {
     const dist = Math.max(14, halfWidth / Math.tan(hfov / 2));
     camBase.pos.set(0, dist * 0.78, dist * 0.92);
-    camBase.look.set(0, -0.6, -1.6);
+    camBase.look.set(0, 1.6, -1.6);
   } else {
     const dist = Math.max(22, halfWidth / Math.tan(hfov / 2));
     camBase.pos.set(0, 3.6 + dist * 0.07, dist + 1.4);
@@ -854,7 +854,8 @@ async function poll() {
     $("#brandName").textContent = S.company.name;
     $("#live").classList.remove("down");
     $("#live").classList.toggle("demo", !!S.demo);
-    $("#liveText").textContent = S.demo ? "Demo data · point STUDIO at a real Paperclip" : S.stale ? "Reconnecting…" : `Live · ${clock(S.generatedAt)}`;
+    if (S.demo) $("#liveText").innerHTML = `Demo data<span class="more"> · point STUDIO at a real Paperclip</span>`;
+    else $("#liveText").textContent = S.stale ? "Reconnecting…" : `Live · ${clock(S.generatedAt)}`;
     timed("sync", () => syncAgents(S.agents));
     if (!compiled) {
       // Compile every shader up front so nothing hitches mid-animation.
@@ -886,11 +887,19 @@ async function poll() {
   setTimeout(poll, POLL_MS);
 }
 
-if (COMPANY) {
-  poll();
-  requestAnimationFrame(frame);
-} else showPicker();
-loadSwitcher();
+// With a single company (the public demo, most real setups) skip the picker and open its studio.
+async function boot() {
+  if (!COMPANY) {
+    const list = await companiesList();
+    if (list.length === 1) COMPANY = list[0].prefix || list[0].id;
+  }
+  if (COMPANY) {
+    poll();
+    requestAnimationFrame(frame);
+  } else showPicker();
+  loadSwitcher();
+}
+boot();
 
 // ---------------------------------------------------------------- company picker + switcher
 async function companiesList() {

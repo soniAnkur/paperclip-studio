@@ -249,9 +249,14 @@ h2 { margin: 0 0 40px; font-size: clamp(36px, 4.6vw, 56px); letter-spacing: -0.0
   .nav { display: none; }
   .switch select { max-width: 130px; }
   .focused .legend { opacity: 0; }
-  .live { margin-left: auto; }
+  .live { margin-left: auto; white-space: nowrap; }
+  .live .more { display: none; }
 }
 @media (max-width: 600px) {
+  .bar { gap: 12px; padding: 0 14px; }
+  .brand { min-width: 0; white-space: nowrap; }
+  #brandName { overflow: hidden; text-overflow: ellipsis; max-width: 96px; }
+  .switch select { max-width: 112px; }
   .hero { min-height: 680px; }
   .hero-copy { top: 80px; }
   .legend { gap: 12px; font-size: 11.5px; bottom: 22px; }

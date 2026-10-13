@@ -1,30 +1,36 @@
 # Paperclip Studio
 
-A calm, 3D, human view of any [Paperclip](https://paperclip.ing) company: who's working, who's free, workstream progress, and a live activity feed.
+**Your AI agents are working. Who is doing what, who is stuck, and what ships next, without reading logs?**
 
-Read-only. Zero dependencies. Bolts onto a running Paperclip instance — no setup beyond pointing it at your API.
+Paperclip Studio turns any [Paperclip](https://paperclip.ing) company into a calm 3D studio: one character per agent, plain-English status, workstream progress, and a live activity feed. Read-only, zero dependencies, works on your phone.
 
-**[Try the live demo →](https://paperclip-studio-drab.vercel.app)** — no install, no Paperclip instance, just sample data.
+## [Try the live demo](https://paperclip-studio-drab.vercel.app)
+
+No install, no Paperclip instance needed. It runs on sample data.
 
 ![Paperclip Studio: hover an agent and it turns around](docs/media/hero.gif)
 
-[▶ 1-minute walkthrough](docs/media/promo.mp4)
+## Quickstart
+
+```bash
+git clone https://github.com/soniAnkur/paperclip-studio.git
+cd paperclip-studio && npm start
+# open http://127.0.0.1:4300
+```
+
+No Paperclip instance? It ships with sample data. To see your own company: `PAPERCLIP_API=http://127.0.0.1:3100/api npm start`
+
+**Star the repo to follow along. New feature every few days.**
+
+[1-minute walkthrough](docs/media/promo.mp4)
 
 | Team | Work |
 |---|---|
 | ![Team view](docs/media/team.png) | ![Work view](docs/media/work.png) |
 
-## Quickstart
+## Run it locally
 
-No real Paperclip instance yet? Just run it — it ships with sample data:
-
-```bash
-git clone https://github.com/soniAnkur/paperclip-studio.git
-cd paperclip-studio
-npm start
-```
-
-Open http://127.0.0.1:4300. If no Paperclip API is reachable, you'll see a "Demo data" banner and a fictional sample company instead of an error.
+Open http://127.0.0.1:4300 after `npm start`. If no Paperclip API is reachable, you'll see a "Demo data" banner and a fictional sample company instead of an error.
 
 ## Pointing it at your own Paperclip
 
